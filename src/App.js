@@ -50,9 +50,7 @@ export default function CadastroTerritorio() {
     setCasas(new Array(5).fill({ numero: "", tipo: "" }));
   }, [quadraSelecionada]);
 
-  const adicionarCasa = () => {
-    setCasas([...casas, { numero: "", tipo: "" }]);
-  };
+  const adicionarCasa = () => setCasas([...casas, { numero: "", tipo: "" }]);
 
   const atualizarCasa = (index, campo, valor) => {
     const novasCasas = [...casas];
