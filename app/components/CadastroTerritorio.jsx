@@ -57,7 +57,7 @@ export default function CadastroTerritorio() {
       .map((row) => row.Rua);
     setRuas([...new Set(ruasFiltradas)]);
     setRuaSelecionada("");
-    setCasas(new Array(5).fill({ numero: "", tipo: "" }));
+    setCasas(Array.from({ length: 5 }, () => ({ numero: "", tipo: "" })));
   }, [quadraSelecionada]);
 
   const adicionarCasa = () => {
@@ -65,8 +65,9 @@ export default function CadastroTerritorio() {
   };
 
   const atualizarCasa = (index, campo, valor) => {
-    const novasCasas = [...casas];
-    novasCasas[index][campo] = valor;
+    const novasCasas = casas.map((casa, idx) =>
+      idx === index ? { ...casa, [campo]: valor } : casa
+    );
     setCasas(novasCasas);
   };
 
@@ -91,7 +92,7 @@ export default function CadastroTerritorio() {
       const result = await response.json();
       if (result.status === "sucesso") {
         alert("Dados salvos com sucesso!");
-        setCasas(new Array(5).fill({ numero: "", tipo: "" }));
+        setCasas(Array.from({ length: 5 }, () => ({ numero: "", tipo: "" })));
       } else {
         alert("Ocorreu um erro ao salvar os dados.");
       }
