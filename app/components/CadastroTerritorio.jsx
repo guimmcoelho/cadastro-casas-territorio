@@ -36,14 +36,17 @@ export default function CadastroTerritorio() {
   }, []);
 
   useEffect(() => {
+    setQuadras([]);
+    setQuadraSelecionada("");
+    setRuas([]);
+    setRuaSelecionada("");
+    setCasas([]);
+
     if (!territorioSelecionado) return;
     const quadrasFiltradas = dados
       .filter((row) => row.Território === territorioSelecionado)
       .map((row) => row.Quadra);
     setQuadras([...new Set(quadrasFiltradas)]);
-    setQuadraSelecionada("");
-    setRuaSelecionada("");
-    setCasas([]);
   }, [territorioSelecionado]);
 
   useEffect(() => {
@@ -99,7 +102,7 @@ export default function CadastroTerritorio() {
       const result = await response.json();
       if (result.status === "sucesso") {
         alert("Dados salvos com sucesso!");
-        setTerritorioSelecionado(""); // Isso aciona os useEffect para resetar quadra, rua e casas
+        setTerritorioSelecionado("");
       } else {
         alert("Ocorreu um erro ao salvar os dados.");
       }
