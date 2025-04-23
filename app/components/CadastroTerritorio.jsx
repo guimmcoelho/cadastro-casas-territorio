@@ -99,12 +99,7 @@ export default function CadastroTerritorio() {
       const result = await response.json();
       if (result.status === "sucesso") {
         alert("Dados salvos com sucesso!");
-        setTerritorioSelecionado("");
-        setQuadraSelecionada("");
-        setRuaSelecionada("");
-        setQuadras([]);
-        setRuas([]);
-        setCasas([]);
+        setTerritorioSelecionado(""); // Isso aciona os useEffect para resetar quadra, rua e casas
       } else {
         alert("Ocorreu um erro ao salvar os dados.");
       }
