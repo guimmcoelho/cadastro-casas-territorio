@@ -72,11 +72,18 @@ export default function CadastroTerritorio() {
   };
 
   const handleSalvar = async () => {
+    const casasValidas = casas.filter(casa => casa.numero.trim() !== "");
+
+    if (casasValidas.length === 0) {
+      alert("Nenhuma casa foi preenchida para salvar.");
+      return;
+    }
+
     const payload = {
       territorio: territorioSelecionado,
       quadra: quadraSelecionada,
       rua: ruaSelecionada,
-      casas,
+      casas: casasValidas,
       data: new Date().toLocaleString(),
     };
 
