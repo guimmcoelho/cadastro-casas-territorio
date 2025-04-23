@@ -99,7 +99,12 @@ export default function CadastroTerritorio() {
       const result = await response.json();
       if (result.status === "sucesso") {
         alert("Dados salvos com sucesso!");
-        setCasas(Array.from({ length: 5 }, () => ({ numero: "", tipo: "" })));
+        setTerritorioSelecionado("");
+        setQuadraSelecionada("");
+        setRuaSelecionada("");
+        setQuadras([]);
+        setRuas([]);
+        setCasas([]);
       } else {
         alert("Ocorreu um erro ao salvar os dados.");
       }
