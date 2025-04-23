@@ -81,7 +81,7 @@ export default function CadastroTerritorio() {
     };
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyquMypcAT9b7HozoabGE-gRTX2qoXptCBdpq7hCZm4Q6GnsdPOuTn8dK0wCLUR5jtt/exec", {
+      const response = await fetch("/api/enviar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
